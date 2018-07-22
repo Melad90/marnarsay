@@ -1,0 +1,34 @@
+<div>
+  <ul class="heroes">
+    <li *ngFor="let news of New" (click)="onSelect(news)" [class.selected]="news === selectedNEW">
+      <button class="delete-button" (click)="deleteNews(newa)">Delete</button>
+      <div class="hero-element">
+        <div class="badge">{{news.id}}</div>
+        <div class="name">{{news.name}}</div>
+        <div class="saying">{{news.saying}}</div>
+      </div>
+    </li>
+  </ul>
+  <div class="editarea">
+    <button (click)="enableAddMode()">Add New Hero</button>
+    <div *ngIf="selectedNEW">
+      <div class="editfields">
+        <div>
+          <label>id: </label>
+          <input [(ngModel)]="selectedNEW.id" placeholder="id" *ngIf="addingNEW" />
+          <label *ngIf="!addingNEW" class="value">{{selectedNEW.id}}</label>
+        </div>
+        <div>
+          <label>name: </label>
+          <input [(ngModel)]="selectedNEW.name" placeholder="name" />
+        </div>
+        <div>
+          <label>saying: </label>
+          <input [(ngModel)]="selectedNEW.saying" placeholder="saying" />
+        </div>
+      </div>
+      <button (click)="cancel()">Cancel</button>
+      <button (click)="save()">Save</button>
+    </div>
+  </div>
+</div>
